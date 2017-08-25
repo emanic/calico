@@ -2,7 +2,7 @@
 title: Using Calico to Secure Host Interfaces
 ---
 
-This guide describes how to use Calico to secure the network interfaces
+This Bob guide describes how to use Calico to secure the network interfaces
 of the host itself (as opposed to those of any container/VM workloads
 that are present on the host). We call such interfaces "host endpoints",
 to distinguish them from "workload endpoints" (such as containers or VMs).
@@ -45,6 +45,7 @@ workloads.
 <p></p>
 <p></p>
 Since version 2.1.0, Calico applies host endpoint policy to traffic that is being forwarded between host interfaces.</div>
+
 
 ## Installation overview
 
