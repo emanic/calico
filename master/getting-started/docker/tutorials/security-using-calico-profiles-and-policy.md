@@ -16,8 +16,8 @@ creating in advance, or editing, the profile associated with the Docker network.
 
 There are two ways in which the policy that defines the Docker network can be modified:
 
-1. Modify the profile policy rules.  This policy is applied directly to each container
-   in the associated Docker network.  This approach is simple, but not very flexible,
+1. Modify the profile policy rules. This policy is applied directly to each container
+   in the associated Docker network. This approach is simple, but not very flexible,
    as the profile must describe the full set of rules that apply to the containers in
    the network.
 
@@ -154,9 +154,8 @@ example), but define a set of global policy resources that use selectors to
 determine which subset of the policy applies to each container based on the
 labels applied by the profile.
 
-> The advantage of using this approach is that by sharing the same labels
-> across different Docker networks, we can re-use globally defined policy without
-> having to re-specify it.
+<div class="alert alert-info" role="alert"><b>Note</b>: The advantage of using this approach is that by sharing the same labels across different Docker networks, we can re-use globally defined policy without having to re-specify it.</div>
+
 
 #### b.1 Create the Docker networks
 

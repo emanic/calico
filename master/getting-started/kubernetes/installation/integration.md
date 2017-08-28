@@ -19,10 +19,8 @@ installation method.
 - An `etcd` cluster accessible by all nodes in the Kubernetes cluster
   - Calico can share the etcd cluster used by Kubernetes, but in some cases it's recommended that a separate cluster is set up.
     A number of production users do share the etcd cluster between the two, but separating them gives better performance at high scale.
-
-> **NOTE**
->
-> Calico can also be installed [without a dependency on etcd](hosted/kubernetes-datastore/), but that is not covered in this document.
+    
+<div class="alert alert-info" role="alert"><b>Note</b>: Calico can also be installed <a href="hosted/kubernetes-datastore/">without a dependency on etcd</a>, but that is not covered in this document.</div>
 
 ## About the Calico Components
 
@@ -102,13 +100,11 @@ RestartSec=10
 [Install]
 WantedBy=multi-user.target
 ```
-> Replace `<ETCD_IP>:<ETCD_PORT>` with your etcd configuration.
 
-> **NOTE**
->
-> To ensure reasonable dataplane programming latency on a system under load,
-`calico/node` requires a CPU reservation of at least 0.25 cores with additional
-benefits up to 0.5 cores.
+Replace `<ETCD_IP>:<ETCD_PORT>` with your etcd configuration.
+
+<div class="alert alert-info" role="alert"><b>Note</b>: To ensure reasonable dataplane programming latency on a system under load, <samp>calico/node</samp> requires a CPU reservation of at least 0.25 cores with additional benefits up to 0.5 cores.</div>
+
 
 ## Installing the Calico CNI plugins
 
@@ -209,7 +205,7 @@ when using the etcd datastore.
 kubectl apply -f {{site.url}}/{{page.version}}/getting-started/kubernetes/installation/rbac.yaml
 ```
 
->[Click here to view the above yaml directly.](rbac.yaml)
+[Click here to view the above yaml directly.](rbac.yaml)
 
 ## Configuring Kubernetes
 

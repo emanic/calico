@@ -28,8 +28,8 @@ port for your etcd cluster.  If your etcd is configured with TLS then you must
 also [configure the Docker daemon][daemon-cert-config] with the correct
 certificates to allow access.
 
-> For Docker 1.10+, you can use the [daemon configuration file][daemon-config-file],
-> or for 1.9 see the appropriate 'Configuring Docker' section in [configuring docker][configuring-docker-1.9].
+<div class="alert alert-info" role="alert"><b>Note</b>: For Docker 1.10+, you can use the <a href="https://docs.docker.com/engine/reference/commandline/dockerd/#/daemon-configuration-file">daemon configuration file</a>, or for 1.9 see the appropriate 'Configuring Docker' section in <a href="https://docs.docker.com/v1.9/engine/articles/configuring/">configuring docker</a>.</div>
+
 
 ## Next Steps
 
@@ -39,6 +39,4 @@ With etcd running and Docker configured, you are ready to
 
 [etcd]: https://coreos.com/etcd/docs/latest/
 [docker]: https://docs.docker.com/engine/installation/
-[daemon-config-file]: https://docs.docker.com/engine/reference/commandline/dockerd/#/daemon-configuration-file
 [daemon-cert-config]: https://docs.docker.com/engine/reference/commandline/dockerd/#nodes-discovery
-[configuring-docker-1.9]: https://docs.docker.com/v1.9/engine/articles/configuring/
