@@ -6,15 +6,9 @@ These instructions will take you through a first-time install of
 Calico's per-host daemon, Felix, starting with the calico-felix binary.
 These instructions apply to Calico v2.1.0 and above.  Older versions
  were packaged differently.
+ 
+<div class="alert alert-info" role="alert"><b>Note</b>: This install process is most suited to bare-metal-only installations where Felix is to be used to control policy for the host's interfaces. For OpenStack and containers there are additional daemons that need to be installed, which are not covered here.</div>
 
-> **NOTE**
->
-> This install process is most suited to bare-metal-only
-> installations where Felix is to be used to control policy for the
-> host's interfaces. For OpenStack and containers there are
-> additional daemons that need to be installed, which are not
-> covered here.
->
 
 ## Prerequisites
 
@@ -41,12 +35,8 @@ Felix has the following pre-requisites:
     stable release of etcd v3.x. To check the version, run
     `etcd --version`
 
-> **NOTE**
->
-> If any of the commands above fail when run with the `--version`
-> flag then you have an old version that doesn't support reporting
-> its version.
->
+<div class="alert alert-info" role="alert"><b>Note</b>: If any of the commands above fail when run with the <samp>--version</samp> flag then you have an old version that doesn't support reporting its version.</div>
+
 
 ## Download and install the binary
 

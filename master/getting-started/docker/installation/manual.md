@@ -4,8 +4,8 @@ title: Installing Calico for Docker
 
 Calico runs as a Docker container on each host. The `calicoctl` command line tool can be used to launch the `calico/node` container.
 
-> Before following the steps here ensure that you have satisfied these
-[requirements]({{site.baseurl}}/{{page.version}}/getting-started/docker/installation/requirements).
+<div class="alert alert-info" role="alert"><b>Important</b>: Before following the steps here ensure that you have satisfied these <a href="{{site.baseurl}}/{{page.version}}/getting-started/docker/installation/requirements">requirements</a>.</div>
+
 
 ## Using calicoctl
 
@@ -16,27 +16,27 @@ Calico runs as a Docker container on each host. The `calicoctl` command line too
    sudo chmod +x /usr/local/bin/calicoctl
    ```
 
-2. Configure access to your etcd cluster, [calicoctl - etcd datastore]({{site.baseurl}}/{{page.version}}/reference/calicoctl/setup/etcdv2).
-3. Launch `calico/node`:
+1. Configure access to your etcd cluster, [calicoctl - etcd datastore]({{site.baseurl}}/{{page.version}}/reference/calicoctl/setup/etcdv2).
+1. Launch `calico/node`:
 
    ```
    sudo calicoctl node run --node-image=quay.io/calico/node:{{site.data.versions[page.version].first.title}}
    ```
 
-Check that `calico/node` is now running:
+1. Check that `calico/node` is now running:
 
-```
-vagrant@calico-01:~$ docker ps
-CONTAINER ID        IMAGE                        COMMAND             CREATED             STATUS              PORTS               NAMES
-408bd2b9ba53        quay.io/calico/node:{{site.data.versions[page.version].first.title}}   "start_runit"       About an hour ago   Up About an hour                        calico-node
-```
+    ```
+    vagrant@calico-01:~$ docker ps
+    CONTAINER ID        IMAGE                        COMMAND             CREATED             STATUS              PORTS               NAMES
+    408bd2b9ba53        quay.io/calico/node:{{site.data.versions[page.version].first.title}}   "start_runit"       About an hour ago   Up About an hour                        calico-node
+    ```
 
-Furthermore, check that the `calico/node` container is functioning properly
+1. Furthermore, check that the `calico/node` container is functioning properly
 with the following command:
 
-```
-sudo calicoctl node status
-```
+    ```
+    sudo calicoctl node status
+    ```
 
 ## Using "docker run"
 
