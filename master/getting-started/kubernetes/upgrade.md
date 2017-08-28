@@ -14,18 +14,11 @@ unscheduleable using [kubectl cordon](http://kubernetes.io/docs/user-guide/kubec
 before upgrading the node, and then make the node scheduleable after the upgrade is
 complete using [kubectl uncordon](http://kubernetes.io/docs/user-guide/kubectl/v1.6/#uncordon).
 
-> **NOTE**
->
-> When upgrading to etcd v3, as long as the cluster is migrated with the
-`etcdctl migrate` command, the v2 data will remain untouched and the etcd v3
-server will continue to speak the v2 protocol so the upgrade should have no
-impact on Calico.
+<div class="alert alert-info" role="alert"><b>Note</b>: When upgrading to etcd v3, as long as the cluster is migrated with the <samp>etcdctl migrate</samp> command, the v2 data will remain untouched and the etcd v3 server will continue to speak the v2 protocol so the upgrade should have no
+impact on Calico.</div>
 
-> **NOTE**
->
-> When upgrading Calico using the Kubernetes datastore driver from a version < v2.3.0
-> to a version >= v2.3.0, or when upgrading Calico using the etcd datastore from a version < v2.4.0
-> to a version >= v2.4.0, you should follow the steps for [upgrading to v1 NetworkPolicy semantics](#upgrading-to-v1-networkpolicy-semantics)
+<div class="alert alert-info" role="alert"><b>Note</b>: When upgrading Calico using the Kubernetes datastore driver from a version < v2.3.0 to a version >= v2.3.0, or when upgrading Calico using the etcd datastore from a version < v2.4.0 to a version >= v2.4.0, you should follow the steps for <a href="#upgrading-to-v1-networkpolicy-semantics">upgrading to v1 NetworkPolicy semantics</a>.</div>
+
 
 ## Upgrading a Hosted Installation of Calico
 
@@ -46,10 +39,9 @@ do the rest.
 kubectl apply -f policy-controller.yaml
 ```
 
-> **NOTE**
->
-> The Deployment must use `.spec.strategy.type==Recreate` to ensure that at most one instance of the
-controller is running at a time.
+<div class="alert alert-info" role="alert"><b>Note</b>: The deployment must use <samp>.spec.strategy.type==Recreate</samp> to ensure that at most one instance of the
+controller is running at a time.</div>
+
 
 ##### Upgrading from pre-2.0
 
@@ -108,10 +100,8 @@ Once the new calico-node Pod has started, make the node schedulable again.
 kubectl uncordon node-01
 ```
 
-> **NOTE**
->
-> You may want to pre-fetch new Docker image to ensure the new node image is started
-within BIRD's graceful restart period of 90 seconds.
+<div class="alert alert-info" role="alert"><b>Note</b>: You may want to pre-fetch new Docker image to ensure the new node image is started within BIRD's graceful restart period of 90 seconds.</div>
+
 
 #### Updating the Calico ConfigMap
 
@@ -160,9 +150,7 @@ policy controller is not running:
 - New Pods in new Namespaces will not get network connectivity.
 - Label changes to existing pods will not be reflected in the applied policy.
 
-> **NOTE**
->
-> Only one instance of the controller should ever be active at a time.
+<div class="alert alert-info" role="alert"><b>Note</b>: Only one instance of the controller should ever be active at a time.</div>
 
 To upgrade the policy controller:
 
@@ -199,8 +187,4 @@ spec:
   podSelector:
 ```
 
-> **NOTE**
->
-> The above steps should be followed when upgrading to Calico v2.3.0+ using the Kubernetes
-> datastore driver, and Calico v2.4.0+ using the etcd datastore,
-> independent of the Kubernetes version being used.
+<div class="alert alert-info" role="alert"><b>Note</b>: The above steps should be followed when upgrading to Calico v2.3.0+ using the Kubernetes datastore driver, and Calico v2.4.0+ using the etcd datastore, independent of the Kubernetes version being used.</div>

@@ -2,7 +2,7 @@
 title: Using Calico to Secure Host Interfaces
 ---
 
-This Bob guide describes how to use Calico to secure the network interfaces
+This guide describes how to use Calico to secure the network interfaces
 of the host itself (as opposed to those of any container/VM workloads
 that are present on the host). We call such interfaces "host endpoints",
 to distinguish them from "workload endpoints" (such as containers or VMs).
@@ -39,12 +39,12 @@ Calico supports selector-based policy as normal when running on a gateway or rou
 allowing for rich, dynamic security policy based on the labels attached to your
 workloads.
 
-<div class="alert alert-info" role="alert"><br>Note</b>: > If you have a host with workloads on it then traffic that is forwarded to workloads bypasses the policy applied to host endpoints. If that weren't the case, the host endpoint policy would need to be very broad to allow all traffic destined for any possible workload. 
-<p></p>
-Since version 2.1.0, Calico applies host endpoint policy to traffic that is
-being forwarded between host interfaces.</div>
-
 ![]({{site.baseurl}}/images/bare-metal-packet-flows.png)
+
+<div class="alert alert-info" role="alert"><b>Note</b>: If you have a host with workloads on it then traffic that is forwarded to workloads bypasses the policy applied to host endpoints. If that weren't the case, the host endpoint policy would need to be very broad to allow all traffic destined for any possible workload. 
+<p></p>
+<p></p>
+Since version 2.1.0, Calico applies host endpoint policy to traffic that is being forwarded between host interfaces.</div>
 
 ## Installation overview
 
@@ -226,20 +226,15 @@ EOF
 Once you have such a policy in place, you may want to disable the
 [failsafe rules](#failsafe-rules).
 
-> **NOTE**
->
-> Packets that reach the end of the list of rules fall-through to the next policy (sorted by the order field).
->
-> The selector in the policy, `all()`, will match *all* endpoints,
-> including any workload endpoints. If you have workload endpoints as
-> well as host endpoints then you may wish to use a more restrictive
-> selector. For example, you could label management interfaces with
-> label `endpoint_type = management` and then use selector
-> `endpoint_type == "management"`
->
-> If you are using Calico for networking workloads, you should add
-> inbound and outbound rules to allow BGP:  add an ingress and egress rule
-> to allow TCP traffic to destination port 179.
+<div class="alert alert-info" role="alert"><b>Note</b>: Packets that reach the end of the list of rules fall through to the next policy (sorted by the <samp>order</samp> field). 
+<p></p>
+<p></p>
+The selector in the policy, <samp>all()</samp>, will match <b>all</b> endpoints, including any workload endpoints. If you have workload endpoints as well as host endpoints then you may wish to use a more restrictive selector. For example, you could label management interfaces with label <samp>endpoint_type = management</samp> and then use selector <samp>endpoint_type == "management"</samp>
+<p></p>
+<p></p>
+If you are using Calico for networking workloads, you should add inbound and outbound rules to allow BGP:  add an ingress and egress rule to allow TCP traffic to destination port 179.
+</div>
+
 
 ## Creating host endpoint objects
 
@@ -277,19 +272,13 @@ cat << EOF | calicoctl create -f -
 EOF
 ```
 
-> **NOTE**
->
-> Felix tries to detect the correct hostname for a system. It logs
-> out the value it has determined at start-of-day in the following
-> format:
->
-> `2015-10-20 17:42:09,813 \[INFO\]\[30149/5\] calico.felix.config 285: Parameter FelixHostname (Felix compute host hostname) has value 'my-hostname' read from None`
->
-> The value (in this case "my-hostname") needs to match the hostname
-> used in etcd. Ideally, the host's system hostname should be set
-> correctly but if that's not possible, the Felix value can be
-> overridden with the FelixHostname configuration setting. See
-> configuration for more details.
+<div class="alert alert-info" role="alert"><b>Note</b>: Felix tries to detect the correct hostname for a system. It logs out the value it has determined at start-of-day in the following format:
+<p></p>
+<p></p>
+<samp>2015-10-20 17:42:09,813 \[INFO\]\[30149/5\] calico.felix.config 285: Parameter FelixHostname (Felix compute host hostname) has value 'my-hostname' read from None</samp>samp>
+<p></p>
+<p></p>
+The value (in this case "my-hostname") needs to match the hostname used in etcd. Ideally, the host's system hostname should be set correctly but if that's not possible, the Felix value can be overridden with the FelixHostname configuration setting. See configuration for more details.</div>
 
 Where `<list of profile IDs>` is an optional list of security profiles
 to apply to the endpoint and labels contains a set of arbitrary
@@ -297,13 +286,7 @@ key/value pairs that can be used in selector expressions.
 
 <!-- TODO(smc) data-model: Link to new data model docs. -->
 
-> **Warning**
->
-> When rendering security rules on other hosts, Calico uses the
-> `expectedIPs` field to resolve label selectors
-> to IP addresses. If the `expectedIPs` field is omitted
-> then security rules that use labels will fail to match
-> this endpoint.
+<div class="alert alert-danger" role="alert"><b>Warning</b>: When rendering security rules on other hosts, Calico uses the <samp>expectedIPs</samp> field to resolve label selectors to IP addresses. If the <samp>expectedIPs</samp> field is omitted then security rules that use labels will fail to match this endpoint.</div>
 
 Or, if you knew that the IP address should be 10.0.0.1, but not the name
 of the interface:
@@ -328,12 +311,7 @@ After you create host endpoint objects, Felix will start policing
 traffic to/from that interface. If you have no policy or profiles in
 place, then you should see traffic being dropped on the interface.
 
-> **NOTE**
->
-> By default, Calico has a failsafe in place that whitelists certain
-> traffic such as ssh. See below for more details on
-> disabling/configuring the failsafe rules.
->
+<div class="alert alert-info" role="alert"><b>Note</b>: By default, Calico has a failsafe in place that whitelists certain traffic such as ssh. See below for more details on disabling/configuring the failsafe rules.</div>
 
 If you don't see traffic being dropped, check the hostname, IP address
 and (if used) the interface name in the configuration. If there was
@@ -393,15 +371,14 @@ described in [Configuring
 Felix]({{site.baseurl}}/{{page.version}}/reference/felix/configuration).  They
 can be disabled by setting each configuration value to "none".
 
-> **WARNING**
->
-> Removing the inbound failsafe rules can leave a host inaccessible.
->
-> Removing the outbound failsafe rules can leave Felix unable to connect
-> to etcd.
->
-> Before disabling the failsafe rules, we recommend creating a policy to
-> replace it with more-specific rules for your environment: see [above](#creating-basic-connectivity-and-calico-policy).
+<div class="alert alert-danger" role="alert"><b>Warning</b>: Removing the inbound failsafe rules can leave a host inaccessible.
+<p></p>
+<p></p>
+Removing the outbound failsafe rules can leave Felix unable to connect to etcd.
+<p></p>
+<p></p>
+Before disabling the failsafe rules, we recommend creating a policy to replace it with more specific rules for your environment: see <a href="#creating-basic-connectivity-and-calico-policy">above</a>.</div>
+
 
 ## Untracked policy
 
@@ -496,19 +473,8 @@ workload - i.e. a locally-hosted pod, container or VM:
 
 - Untracked policies technically do apply, but never have any net positive
   effect for such flows.
-
-  > **NOTE**
-  >
-  > To be precise, untracked policy for the incoming host interface may apply
-  > in the forwards direction, and if so it will have the effect of forwarding
-  > the packet to the workload without any connection tracking.  But then, in
-  > the reverse direction, there will be no conntrack state for the return
-  > packets to match, and there is no application of any egress rules that may
-  > be defined by the untracked policy - so unless the workload's policy
-  > specifically allows the relevant source IP, the return packet will be
-  > dropped.  That is the same overall result as if there was no untracked
-  > policy at all, so in practice it is as if untracked policies do not apply
-  > to this flow.
+  
+  <div class="alert alert-info" role="alert"><b>Note</b>: To be precise, untracked policy for the incoming host interface may apply in the forwards direction, and if so it will have the effect of forwarding the packet to the workload without any connection tracking.  But then, in the reverse direction, there will be no conntrack state for the return packets to match, and there is no application of any egress rules that may be defined by the untracked policy&mdash;so unless the workload's policy specifically allows the relevant source IP, the return packet will be dropped.  That is the same overall result as if there was no untracked policy at all, so in practice it is as if untracked policies do not apply to this flow.</div>
 
 For packets that arrive on a host interface and are destined for a local
 server process in the host namespace:
@@ -630,18 +596,12 @@ the nodes' own IP addresses, and 192.168.0.0/16 for IP addresses that
 Kubernetes will assign to pods; obviously you should adjust for the CIDRs that
 are in use in your own cluster.
 
-> **NOTE**
->
-> The `drop-other-ingress` policy has a higher `order` value than
-> `allow-cluster-internal-ingress`, so that it applies _after_
-> `allow-cluster-internal-ingress`.
->
-> The explicit `drop-other-ingress` policy is needed because there is no
-> automatic default-drop semantic for pre-DNAT policy.  There _is_ a
-> default-drop semantic for normal host endpoint policy but - as noted above -
-> normal host endpoint policy is not always enforced.
+<div class="alert alert-info" role="alert"><b>Note</b>: The <samp>drop-other-ingress</samp> policy has a higher <samp>order</samp> value than <samp>allow-cluster-internal-ingress</samp>, so that it applies <b>after</b> <samp>allow-cluster-internal-ingress</samp>.
+<p></p><p></p>
+The explicit <samp>drop-other-ingress</samp> policy is needed because there is no automatic default-drop semantic for pre-DNAT policy.  There <b>is</b> a default-drop semantic for normal host endpoint policy but&mdash;as noted above&mdash;normal host endpoint policy is not always enforced.</div>
 
-We also need policy to allow _egress_ traffic through each node's external
+
+We also need policy to allow *egress_ traffic through each node's external
 interface.  Otherwise, when we define host endpoints for those interfaces, no
 egress traffic will be allowed (except for traffic that is allowed by
 the [failsafe rules](#failsafe-rules)).
@@ -660,23 +620,13 @@ calicoctl apply -f - <<EOF
 EOF
 ```
 
-> **NOTE**
->
-> These egress rules are defined as normal host endpoint policies, not
-> pre-DNAT, because pre-DNAT policy does not support egress rules.  (Which is
-> because pre-DNAT policies are enforced at a point in the Linux networking
-> stack where it is not yet determined what a packet's outgoing interface will
-> be.)
->
-> Because these are normal host endpoint policies, they are not enforced for
-> traffic that is sent from a local pod.  Calico does not yet have a form of
-> host endpoint protection that can be used to restrict outbound traffic from a
-> local workload.
->
-> The policy above allows applications or server processes running on the nodes
-> themselves (as opposed to in pods) to connect outbound to any destination.
-> In case you have a use case for restricting to particular IP addresses, you
-> can achieve that by adding a corresponding `destination` spec.
+<div class="alert alert-info" role="alert"><b>Note</b>: These egress rules are defined as normal host endpoint policies, not pre-DNAT, because pre-DNAT policy does not support egress rules. (Which is because pre-DNAT policies are enforced at a point in the Linux networking stack where it is not yet determined what a packet's outgoing interface will be.)
+<p></p>
+<p></p>
+Because these are normal host endpoint policies, they are not enforced for traffic that is sent from a local pod. Calico does not yet have a form of host endpoint protection that can be used to restrict outbound traffic from a local workload.
+<p></p>
+<p></p>
+The policy above allows applications or server processes running on the nodes themselves (as opposed to in pods) to connect outbound to any destination. In case you have a use case for restricting to particular IP addresses, you can achieve that by adding a corresponding <samp>destination</samp> spec.</div>
 
 Now we can define a host endpoint for the outwards-facing interface of each
 node.  The policies above all have a selector that makes them applicable to any
