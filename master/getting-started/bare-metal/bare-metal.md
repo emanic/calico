@@ -2,7 +2,7 @@
 title: Using Calico to Secure Host Interfaces
 ---
 
-This Bob guide describes how to use Calico to secure the network interfaces
+This guide describes how to use Calico to secure the network interfaces
 of the host itself (as opposed to those of any container/VM workloads
 that are present on the host). We call such interfaces "host endpoints",
 to distinguish them from "workload endpoints" (such as containers or VMs).
@@ -41,11 +41,11 @@ workloads.
 
 ![]({{site.baseurl}}/images/bare-metal-packet-flows.png)
 
+
 <div class="alert alert-info" role="alert"><b>Note</b>: If you have a host with workloads on it then traffic that is forwarded to workloads bypasses the policy applied to host endpoints. If that weren't the case, the host endpoint policy would need to be very broad to allow all traffic destined for any possible workload. 
 <p></p>
 <p></p>
 Since version 2.1.0, Calico applies host endpoint policy to traffic that is being forwarded between host interfaces.</div>
-
 
 ## Installation overview
 
@@ -287,7 +287,11 @@ key/value pairs that can be used in selector expressions.
 
 <!-- TODO(smc) data-model: Link to new data model docs. -->
 
+<<<<<<< HEAD
 <div class="alert alert-danger" role="alert"><b>Important</b>: When rendering security rules on other hosts, Calico uses the <samp>expectedIPs</samp> field to resolve label selectors to IP addresses. If the <samp>expectedIPs</samp> field is omitted then security rules that use labels will fail to match this endpoint.</div>
+=======
+<div class="alert alert-danger" role="alert"><b>Warning</b>: When rendering security rules on other hosts, Calico uses the <samp>expectedIPs</samp> field to resolve label selectors to IP addresses. If the <samp>expectedIPs</samp> field is omitted then security rules that use labels will fail to match this endpoint.</div>
+>>>>>>> Initial efforts to move to Bootstrap notes
 
 Or, if you knew that the IP address should be 10.0.0.1, but not the name
 of the interface:
@@ -372,7 +376,11 @@ described in [Configuring
 Felix]({{site.baseurl}}/{{page.version}}/reference/felix/configuration).  They
 can be disabled by setting each configuration value to "none".
 
+<<<<<<< HEAD
 <div class="alert alert-danger" role="alert"><b>Important</b>: Removing the inbound failsafe rules can leave a host inaccessible.
+=======
+<div class="alert alert-danger" role="alert"><b>Warning</b>: Removing the inbound failsafe rules can leave a host inaccessible.
+>>>>>>> Initial efforts to move to Bootstrap notes
 <p></p>
 <p></p>
 Removing the outbound failsafe rules can leave Felix unable to connect to etcd.
