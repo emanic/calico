@@ -9,13 +9,9 @@ This document will demonstrate how to manipulate policy for Calico using
 - Configure policy based off these labels
 
 To demonstrate this, we will use Marathon to launch an nginx webserver using the Universal Containerizer.
-Then, we will launch basic curl task which will repeatedly curl the webserver.
+Then, we will launch basic curl task which will repeatedly curl the web server.
 
-> **NOTE**
->
-> This example assumes you are running in a DC/OS environment since it uses the DC/OS DNS to access the
-> webserver.  It is easy enough to adjust this demo for non-DC/OS environments by replacing the
-> `webserver.marathon.containerip.dcos.thisdcos.directory` DNS name with the IP address of the webserver container.
+<div class="alert alert-info" role="alert"><b>Note</b>: This example assumes you are running in a DC/OS environment since it uses the DC/OS DNS to access the web server. It is easy enough to adjust this demo for non-DC/OS environments by replacing the <samp>webserver.marathon.containerip.dcos.thisdcos.directory</samp> DNS name with the IP address of the web server container.</div>
 
 ## Setting Labels
 
@@ -94,9 +90,7 @@ calicoctl apply -f - <<EOF
 EOF
 ```
 
-> **NOTE**
->
-> You'll need `calicoctl` configured to access your central etcd datastore. see [help]({{site.baseurl}}/{{page.version}}/reference/calicoctl/setup/etcdv2)
+<div class="alert alert-info" role="alert"><b>Note</b>: You'll need <samp>calicoctl</samp> configured to access your central etcd datastore. See <a href="{{site.baseurl}}/{{page.version}}/reference/calicoctl/setup/etcdv2">help</a>.</div>
 
 Checking the task's log should show that these connections are no longer successful.
 

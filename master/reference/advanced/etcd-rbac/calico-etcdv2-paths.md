@@ -5,10 +5,8 @@ title: Calico key and path prefixes in etcd v2
 The Paths listed here are the key or path prefixes that a particular calico
 component needs access to in etcd to function successfully.
 
-> **NOTE**
->
-> The paths listed here may change in the future and at that point anything
-> referencing them (like etcd roles) would need to be updated appropriately.
+<div class="alert alert-info" role="alert"><b>Note</b>: The paths listed here may change in the future and at that point anything referencing them (like etcd roles) would need to be updated appropriately.</div>
+
 
 ## calico/node
 
