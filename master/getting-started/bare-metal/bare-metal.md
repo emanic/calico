@@ -287,11 +287,7 @@ key/value pairs that can be used in selector expressions.
 
 <!-- TODO(smc) data-model: Link to new data model docs. -->
 
-<<<<<<< HEAD
 <div class="alert alert-danger" role="alert"><b>Important</b>: When rendering security rules on other hosts, Calico uses the <samp>expectedIPs</samp> field to resolve label selectors to IP addresses. If the <samp>expectedIPs</samp> field is omitted then security rules that use labels will fail to match this endpoint.</div>
-=======
-<div class="alert alert-danger" role="alert"><b>Warning</b>: When rendering security rules on other hosts, Calico uses the <samp>expectedIPs</samp> field to resolve label selectors to IP addresses. If the <samp>expectedIPs</samp> field is omitted then security rules that use labels will fail to match this endpoint.</div>
->>>>>>> Initial efforts to move to Bootstrap notes
 
 Or, if you knew that the IP address should be 10.0.0.1, but not the name
 of the interface:
@@ -376,11 +372,7 @@ described in [Configuring
 Felix]({{site.baseurl}}/{{page.version}}/reference/felix/configuration).  They
 can be disabled by setting each configuration value to "none".
 
-<<<<<<< HEAD
 <div class="alert alert-danger" role="alert"><b>Important</b>: Removing the inbound failsafe rules can leave a host inaccessible.
-=======
-<div class="alert alert-danger" role="alert"><b>Warning</b>: Removing the inbound failsafe rules can leave a host inaccessible.
->>>>>>> Initial efforts to move to Bootstrap notes
 <p></p>
 <p></p>
 Removing the outbound failsafe rules can leave Felix unable to connect to etcd.
