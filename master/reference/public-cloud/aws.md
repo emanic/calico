@@ -25,8 +25,8 @@ in AWS.
 | BGP              | Custom TCP Rule | TCP      | 179        |
 | \*IPIP           | Custom Protocol | IPIP     | all        |
 
->\*IPIP: This rule is required only when using Calico with IPIP encapsulation.
-Keep reading for information on when IPIP is required in AWS.
+<div class="alert alert-info" role="alert"><b>Note</b>: The <samp>\*IPIP:</samp> rule is required only when using Calico with IPIP encapsulation. Keep reading for information on when IPIP is required in AWS.</div>
+
 
 #### Routing Traffic Within a Single VPC Subnet
 
@@ -52,10 +52,9 @@ performance, you can configure Calico to perform IPIP encapsulation only across 
 To enable the "cross-subnet" IPIP feature, configure your Calico IP pool resources
 to enable IPIP and set the mode to "cross-subnet".
 
-> This feature was introduced in Calico v2.1, if your deployment was created with 
-> an older version of Calico, or if you if you are unsure whether your deployment 
-> is configured correctly, follow the [Configuring IP-in-IP guide]({{site.baseurl}}/{{page.version}}/usage/configuration/ip-in-ip)
-> which discusses this in more detail.
+<div class="alert alert-info" role="alert"><b>Note</b>: This feature was introduced in Calico v2.1, 
+if your deployment was created with an older version of Calico, or if you are unsure whether your 
+deployment is configured correctly, follow the <a href="{{site.baseurl}}/{{page.version}}/usage/configuration/ip-in-ip">Configuring IP-in-IP guide</a> which discusses this in more detail.</div>
 
 The following `calicoctl` command will create or modify an IPv4 pool with
 CIDR 192.168.0.0/16 using IPIP mode `cross-subnet`. Adjust the pool CIDR for your deployment.

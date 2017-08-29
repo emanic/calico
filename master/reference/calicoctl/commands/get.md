@@ -7,9 +7,8 @@ This sections describes the `calicoctl get` command.
 Read the [calicoctl command line interface user reference]({{site.baseurl}}/{{page.version}}/reference/calicoctl/) 
 for a full list of calicoctl commands.
 
-> The available actions for a specific resource type may be limited based on the datastore
-> used for Calico (etcdv2 / Kubernetes API).  Please refer to the [Resources section]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/)
-> for details about each resource type.
+<div class="alert alert-info" role="alert"><b>Note</b>: The available actions for a specific resource type may be limited based on the datastore used for Calico (etcdv2 / Kubernetes API). Please refer to the <a href="{{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/">Resources section</a> for details about each resource type.</div>
+
 
 ## Displaying the help text for 'calicoctl get' command
 

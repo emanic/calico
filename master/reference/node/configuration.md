@@ -45,11 +45,8 @@ The `calico/node` container is primarily configured through environment variable
 
 In addition to the above, `calico/node` also supports [the standard Felix configuration environment variables](../felix/configuration).
 
-> **NOTE**
->
-> When Calico is configured to use the Kubernetes API as the datastore, the environments
-> used for BGP configuration are ignored - this includes selection of the node AS number (AS)
-> and all of the IP selection options (IP, IP6, IP_AUTODETECTION_METHOD, IP6_AUTODETECTION_METHOD).
+<div class="alert alert-info" role="alert"><b>Note</b>: When Calico is configured to use the Kubernetes API as the datastore, the environments used for BGP configuration are ignored&mdash;this includes selection of the node AS number (AS) and all of the IP selection options (IP, IP6, IP_AUTODETECTION_METHOD, IP6_AUTODETECTION_METHOD).</div>
+
 
 ### IP Autodetection methods
 

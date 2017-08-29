@@ -11,13 +11,11 @@ to apply policy to the interface.
 For `calicoctl` commands that specify a resource type on the CLI, the following
 aliases are supported (all case insensitive): `workloadendpoint`, `workloadendpoints`, `wep`, `weps`.
 
-> **NOTE**
->
-> While `calicoctl` allows the user to fully manage Workload Endpoint resources,
-the lifecycle of these resources is generally handled by an orchestrator specific
+<div class="alert alert-info" role="alert"><b>Note</b>: While <samp>calicoctl</samp> allows the user to fully manage Workload Endpoint resources, the lifecycle of these resources is generally handled by an orchestrator specific
 plugin such as the Calico CNI plugin, the Calico Docker network plugin,
-or the Calico OpenStack Neutron Driver.  In general, we recommend that you only
-use `calicoctl` to view this resource type.
+or the Calico OpenStack Neutron Driver. In general, we recommend that you only
+use <samp>calicoctl</samp> to view this resource type.</div>
+
 
 ### Sample YAML
 

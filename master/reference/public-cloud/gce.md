@@ -16,8 +16,10 @@ Calico requires the following firewall rules to function in GCE.
 | BGP              | TCP      | 179        |
 | \*IPIP           | 4        | all        |
 
->\*IPIP: This rule is required only when using Calico with IPIP encapsulation.
-Keep reading for information on when IPIP is required in GCE.
+<div class="alert alert-info" role="alert"><b>Note</b>: The <samp>\*IPIP:</samp> 
+rule is required only when using Calico with IPIP encapsulation. Keep reading for 
+information on when IPIP is required in AWS.</div>
+
 
 #### Routing Traffic
 
