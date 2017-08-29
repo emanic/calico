@@ -115,9 +115,7 @@ Example CNI config:
 }
 ```
 
-> **NOTE**
->
-> `ipv6_pools` will be respected only when `assign_ipv6` is set to "true"
+<div class="alert alert-info" role="alert"><b>Note</b>: <samp>ipv6_pools</samp> will be respected only when <samp>assign_ipv6</samp> is set to <samp>"true"</samp>.</div>
 
 Any IP Pools specified in the CNI config must have already been created. It is an error to specify IP Pools in the config that do not exist.
 
@@ -243,10 +241,8 @@ annotations:
 
 If provided, these IP Pools will override any IP Pools specified in the CNI config.
 
-  > **NOTE**
-  >
-  > This requires the IP Pools to exist before `ipv4pools` or `ipv6pools` annotations are used.
-  > Requesting a subset of an IP Pool is not supported. IP Pools requested in the annotations must exactly match a configured [IP Pool]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/ippool).
+<div class="alert alert-info" role="alert"><b>Note</b>: This requires the IP Pools to exist before <samp>ipv4pools</samp> or <samp>ipv6pools</samp> annotations are used. Requesting a subset of an IP Pool is not supported. IP Pools requested in the annotations must exactly match a configured <a href="{{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/ippool">IP Pool</a>.</div>
+
 
 #### Requesting a Specific IP address
 
@@ -272,8 +268,10 @@ annotations:
         "cni.projectcalico.org/ipAddrsNoIpam": "[\"10.0.0.1\"]"
 ```
 
-  > **NOTE**
-  >
-  > - The `ipAddrs` and `ipAddrsNoIpam` annotations can't be used together.
-  > - You can only specify one IPv4/IPv6 or one IPv4 and one IPv6 address with these annotations.
-  > - When `ipAddrs` or `ipAddrsNoIpam` is used with `ipv4pools` or `ipv6pools`, `ipAddrs` / `ipAddrsNoIpam` take priority.
+<div class="alert alert-info" role="alert"><b>Note</b>: 
+<p></p><p></p>
+&bull; The <samp>ipAddrs</samp> and <samp>ipAddrsNoIpam</samp> annotations can't be used together.
+<p></p><p></p>
+&bull; You can only specify one IPv4/IPv6 or one IPv4 and one IPv6 address with these annotations.
+<p></p><p></p>
+&bull; When <samp>ipAddrs</samp> or <samp>ipAddrsNoIpam</samp> is used with <samp>ipv4pools</samp> or <samp>ipv6pools</samp>, <samp>ipAddrs</samp> / <samp>ipAddrsNoIpam</samp> take priority.</div>

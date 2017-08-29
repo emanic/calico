@@ -26,23 +26,25 @@ information.
 
 ### Removing a Calico Node resource
 
-**Note:**
 Removing a Node resource will also remove the Workload Endpoint, Host
 Endpoint, and IP Address resources and any other sub configuration items
 associated with that Node.
 
-**Warning**
-- Deleting a Node resource may be service impacting if the host is still in
-  service.  Ensure that the host is no longer in service before deleting the
+<div class="alert alert-danger" role="alert"><b>Important</b>: 
+<p></p><p></p>
+&bull; Deleting a Node resource may be service impacting if the host is still in
+  service. Ensure that the host is no longer in service before deleting the
   Node resource.
-- Any configuration specific to the node will be removed.  This would be
-  configuration like node BGP peerings or custom Felix configs.
+<p></p><p></p>
+&bull; Any configuration specific to the node will be removed. This would be
+  configuration like node BGP peerings or custom Felix configs.</div>
+
 
 ### Removing a single Calico Node resource
 
 See the example below for how to remove a node with the calicoctl command.
 
-**Caution** See the [Warning](#removing-a-calico-node-resource) above
+<div class="alert alert-danger" role="alert"><b>Caution</b>: See <a href="#removing-a-calico-node-resource">Removing a Calico Node resource</a> above.</div>
 
 ```
 calicoctl delete node <nodeName>
@@ -70,7 +72,7 @@ Below is an example of how to create a file of Nodes and delete them.
 
 2. To delete the nodes listed in the file pass it like below.
 
-   **Caution** See the [Warning](#removing-a-calico-node-resource) above
+   <div class="alert alert-danger" role="alert"><b>Caution</b>: See <a href="#removing-a-calico-node-resource">Removing a Calico Node resource</a> above.</div>
 
    ```
    calicoctl delete -f nodes_to_delete.yaml

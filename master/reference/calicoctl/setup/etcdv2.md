@@ -40,10 +40,8 @@ will check a particular set of environment variables.
 
 See the table below for details on the etcdv2 specific environment variables.
 
-> **NOTE**
->
-> If neither file nor environment variables are set, calicoctl defaults to
-> using etcdv2 with a single endpoint of http://127.0.0.1:2379.
+<div class="alert alert-info" role="alert"><b>Note</b>: If neither file nor environment variables are set, calicoctl defaults to using etcdv2 with a single endpoint of http://127.0.0.1:2379.</div>
+
 
 ## Complete list of etcdv2 connection configuration
 
@@ -57,18 +55,16 @@ See the table below for details on the etcdv2 specific environment variables.
 | etcdCertFile (ETCD_CERT_FILE)      | Path to the etcd client cert, e.g. `/etc/calico/cert.pem` (optional)                   | string
 | etcdCACertFile (ETCD_CA_CERT_FILE) | Path to the etcd CA file, e.g. `/etc/calico/ca.pem` (optional)                         | string
 
-> **NOTE**
->
-> 1. If you are running with TLS enabled, ensure your endpoint addresses use https
-> 2. When specifying through environment variables, the DATASTORE_TYPE environment
->    is not required for etcdv2.
-> 3. All environment variables may also be prefixed with "CALICO_", for example
->    "CALICO_DATASTORE_TYPE" and "CALICO_ETCD_ENDPOINTS" etc. may also be used.
->    This is useful if the non-prefixed names clash with existing environment
->    variables defined on your system
-> 4. Previous versions of calicoctl supported ETCD_SCHEME and ETC_AUTHORITY environment
->    variables as a mechanism for specifying the etcd endpoints.  These variables are
->    deprecated in favor of the ETCD_ENDPOINTS list.
+<div class="alert alert-info" role="alert"><b>Note</b>: If you are running with TLS enabled:
+<p></p><p></p>
+&bull; Ensure your endpoint addresses use https.
+<p></p><p></p>
+&bull; When specifying through environment variables, the <samp>DATASTORE_TYPE</samp> environment is not required for etcdv2.
+<p></p><p></p>
+&bull; All environment variables may also be prefixed with <samp>"CALICO_"</samp>, for example <samp>"CALICO_DATASTORE_TYPE"</samp> and <samp>"CALICO_ETCD_ENDPOINTS"</samp> etc. may also be used. This is useful if the non-prefixed names clash with existing environment variables defined on your system.
+<p></p><p></p>
+&bull; Previous versions of calicoctl supported <samp>ETCD_SCHEME</samp> and <samp>ETC_AUTHORITY</samp> environment variables as a mechanism for specifying the etcd endpoints. These variables are deprecated in favor of the <samp>ETCD_ENDPOINTS</samp> list.</div>
+
 
 ## Examples
 

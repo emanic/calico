@@ -16,13 +16,8 @@ The [calicoctl repostiory](https://github.com/projectcalico/calicoctl) contains 
 configuration files that are used to configure and "glue" these components
 together.
 
-> **NOTE**
->
-> `calico/node` may be run in *policy only mode* in which Felix
-> runs, but both BIRD and confd are removed.  This provides policy management
-> without route distribution between hosts.  This mode can be enabled by
-> setting the environment variable `CALICO_NETWORKING=false` before starting
-> the node with `calicoctl node run`.
+<div class="alert alert-info" role="alert"><b>Note</b>: <samp>calico/node</samp> may be run in <b>policy only mode</b> in which Felix runs, but both BIRD and confd are removed. This provides policy management without route distribution between hosts. This mode can be enabled by setting the environment variable <samp>CALICO_NETWORKING=false</samp> before starting the node with <samp>calicoctl node run</samp>.</div>
+
 
 #### Calico Felix agent
 
