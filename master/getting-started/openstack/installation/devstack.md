@@ -6,14 +6,7 @@ The networking-calico project provides a DevStack plugin.  The following
 instructions explain how to set up a single or multiple node DevStack/Calico
 system, and then how to see Calico connectivity in action.
 
-> **NOTE**
->
-> networking-calico includes a shell script that implements the following setup
-> instructions, at
-> https://git.openstack.org/cgit/openstack/networking-calico/tree/devstack/bootstrap.sh.
-> You are welcome to use it, but we recommend that you read the following
-> description first anyway, and briefly review the script's code, so that you
-> will understand what the script does.
+<div class="alert alert-info" role="alert"><b>Note</b>: networking-calico includes a <a href="https://git.openstack.org/cgit/openstack/networking-calico/tree/devstack/bootstrap.sh">shell script</a> that implements the following setup instructions. You are welcome to use it, but we recommend that you read the following description first anyway, and briefly review the script's code, so that you will understand what the script does.</div>
 
 
 Single (or first) node setup
@@ -40,19 +33,8 @@ and compute functions running on the same node:
 
        sysctl -w net.ipv4.ip_forward=1
        sysctl -w net.ipv6.conf.all.forwarding=1
-
-> **NOTE**
->
-> There is an
-> [OpenStack CI job](http://git.openstack.org/cgit/openstack-infra/project-config/tree/jenkins/jobs/networking-calico.yaml)
-> that tests the networking-calico DevStack plugin against the latest master
-> OpenStack code.  In case you hit trouble with the procedure above, please
-> check the latest
-> [logs from that job](http://logs.openstack.org/periodic/periodic-tempest-dsvm-networking-calico-master/) to
-> see if there is also a problem in the OpenStack CI, and let us know if so.
-> (Occasionally that test fails because there is some change in the master
-> Neutron code that requires a corresponding change in networking-calico.  We
-> may not notice that straightaway, so will always appreciate a prompt!)
+       
+<div class="alert alert-info" role="alert"><b>Note</b>: There is an <a href="http://git.openstack.org/cgit/openstack-infra/project-config/tree/jenkins/jobs/networking-calico.yaml">OpenStack CI job</a> that tests the networking-calico DevStack plugin against the latest master OpenStack code. In case you hit trouble with the procedure above, please check the latest <a href="http://logs.openstack.org/periodic/periodic-tempest-dsvm-networking-calico-master/">logs from that job</a> to see if there is also a problem in the OpenStack CI, and let us know if so. (Occasionally that test fails because there is some change in the master Neutron code that requires a corresponding change in networking-calico. We may not notice that straightaway, so will always appreciate a prompt!)</div>
 
 
 Multi-node setup

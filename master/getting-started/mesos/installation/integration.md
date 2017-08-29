@@ -22,11 +22,9 @@ Calico runs as a Docker container on each host. The `calicoctl` command line too
    ```
    sudo ETCD_ENDPOINTS=http://$ETCD_IP:$ETCD_PORT calicoctl node run --node-image=quay.io/calico/node:{{site.data.versions[page.version].first.title}}
    ```
+   
+   <div class="alert alert-info" role="alert"><b>Note</b>: Ensure you've set or replaced <samp>$ETCD_IP</samp> and <samp>$ETCD_PORT</samp> to point to <a href="prerequisites">your etcd cluster</a>.</div>
 
-   > **NOTE**
-   >
-   > Ensure you've set or replaced `$ETCD_IP` and `$ETCD_PORT` to point to
-   [your etcd cluster](prerequisites).
 
    Check that `calico/node` is now running:
 
