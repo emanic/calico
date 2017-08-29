@@ -5,18 +5,13 @@ title: Red Hat Enterprise Linux 7 Packaged Install Instructions
 For this version of Calico, with OpenStack on RHEL 7 or CentOS 7, we recommend
 using OpenStack Liberty or later.
 
-> **NOTE**
->
-> On RHEL/CentOS 7.3, with Mitaka or earlier, there is a Nova
-> [bug](https://bugs.launchpad.net/nova/+bug/1649527) that breaks Calico
-> operation.  You can avoid this bug by:
->
-> - using Newton or later (recommended)
->
-> - or using RHEL/CentOS 7.2, instead of 7.3
->
-> - or manually [patching](https://review.openstack.org/#/c/425637/) your Nova
->   install on each compute node.
+<div class="alert alert-info" role="alert"><b>Note</b>: On RHEL/CentOS 7.3, with Mitaka or earlier, there is a Nova <a href="https://bugs.launchpad.net/nova/+bug/1649527">bug</a> that breaks Calico operation. You can avoid this bug by:
+<p></p><p></p>
+&bull; using Newton or later (recommended)
+<p></p><p></p>
+&bull; or using RHEL/CentOS 7.2, instead of 7.3
+<p></p><p></p>
+&bull; or manually <a href="https://review.openstack.org/#/c/425637/">patching</a> your Nova install on each compute node.</div>
 
 These instructions will take you through a first-time install of Calico.  If
 you are upgrading an existing system, please see the [Calico on OpenStack
@@ -30,13 +25,8 @@ specific instructions in the control and compute sections. If you want
 to create a combined control and compute node, work through all three
 sections.
 
-> **WARNING**
->
-> Following the upgrade to use etcd as a data store, Calico
-> currently only supports RHEL 7 and above. If support on RHEL 6.x
-> or other versions of Linux is important to you, then please [let
-> us know](https://www.projectcalico.org/contact/).
->
+<div class="alert alert-danger" role="alert"><b>Important</b>: Following the upgrade to use etcd as a data store, Calico currently only supports RHEL 7 and above. If support on RHEL 6.x or other versions of Linux is important to you, then please <a href="https://www.projectcalico.org/contact/">let us know</a>.</div>
+
 
 ## Prerequisites
 
@@ -61,7 +51,7 @@ networking.
 
 {% include ppa_repo_name %}
 
-Add the EPEL repository -- see <https://fedoraproject.org/wiki/EPEL>.
+Add the EPEL repository (see <https://fedoraproject.org/wiki/EPEL>).
 You may have already added this to install OpenStack.
 
 Configure the Calico repository:
@@ -98,12 +88,8 @@ through the process.
             cd etcd-v2.0.11-linux-amd64
             mv etcd* /usr/local/bin/
         ```
-
-        > **WARNING**
-        >
-        > We've seen certificate errors downloading etcd - you may need
-        > to add `--insecure` to the curl command to ignore this.
-        >
+        
+        <div class="alert alert-danger" role="alert"><b>Important</b>: We've seen certificate errors downloading etcd&mdash;you may need to add <samp>--insecure</samp> to the curl command to ignore this.</div>
 
     -   Create an etcd user:
 
@@ -201,11 +187,7 @@ isn't running the etcd database itself (both control and compute nodes).
         mv etcd* /usr/local/bin/
     ```
 
-    > **WARNING**
-    >
-    > We've seen certificate errors downloading etcd - you may need
-    > to add `--insecure` to the curl command to ignore this.
-    >
+    <div class="alert alert-danger" role="alert"><b>Important</b>: We've seen certificate errors downloading etcd&mdash;you may need to add <samp>--insecure</samp> to the curl command to ignore this.</div>
 
     -   Create an etcd user:
 
@@ -259,26 +241,15 @@ On each control node, perform the following steps:
     routers, subnets and networks (in that order) created by the install
     process referenced above. You can do this using the web dashboard or
     at the command line.
-
-    > **HINT**
-    >
-    > The Admin and Project sections of the web dashboard both
-    > have subsections for networks and routers. Some networks may
-    > need to be deleted from the Admin section.
-    >
-
-    > **WARNING**
-    >
-    > The Calico install will fail if incompatible state is
-    > left around.
-    >
+    
+    <div class="alert alert-info" role="alert"><b>Note</b>: The Admin and Project sections of the web dashboard both have subsections for networks and routers. Some networks may need to be deleted from the Admin section.</div>
+    
+    <div class="alert alert-danger" role="alert"><b>Important</b>: The Calico install will fail if incompatible state is left around.</div>
 
 2.  Run `yum update`. This will bring in Calico-specific updates to `dnsmasq`.
 
 3.  Edit the `/etc/neutron/neutron.conf` file. In the \[DEFAULT\]
-    section:
-    -   Find the line beginning with `core_plugin`, and change it to
-        read `core_plugin = calico`.
+    section, find the line beginning with `core_plugin`, and change it to read `core_plugin = calico`.
 
 4.  Install the `calico-control` package:
 
@@ -325,13 +296,10 @@ On each compute node, perform the following steps:
              "/dev/rtc", "/dev/hpet", "/dev/net/tun",
         ]
     ```
-
-    > **NOTE**
-    >
-    > The `cgroup_device_acl` entry is subtly different to the
-    >
-    > :   default. It now contains `/dev/net/tun`.
-    >
+    
+    <div class="alert alert-info" role="alert"><b>Note</b>: The <samp>cgroup_device_acl</samp> entry is subtly different to the
+    <p></p><p></p>
+    :   default. It now contains <samp>/dev/net/tun</samp>.</div>
 
     Then restart libvirt to pick up the changes:
 

@@ -77,10 +77,7 @@ sudo rkt run --stage1-path=/usr/share/rkt/stage1-fly.aci \
   quay.io/calico/node:{{site.data.versions[page.version].first.title}} &
 ```
 
-> Replace `<ETCD_IP>:<ETCD_PORT>` with your etcd configuration.  The `ETCD_ENDPOINTS`
-> environment may contain a comma separated list of endpoints of your etcd cluster.
-> If the environment is omitted, Calico defaults to a single etcd
-> endpoint at http://127.0.0.1:2379.
+<div class="alert alert-info" role="alert"><b>Note</b>: Replace <samp>ETCD_IP</samp> and <samp>ETCD_PORT</samp> with your etcd configuration.  The <samp>ETCD_ENDPOINTS</samp> environment may contain a comma separated list of endpoints of your etcd cluster. If the environment is omitted, Calico defaults to a single etcd endpoint at http://127.0.0.1:2379.</div>
 
 You can check that it's running using `sudo rkt list`.
 
@@ -168,10 +165,8 @@ cat >/etc/rkt/net.d/10-calico-mynet.conf <<EOF
 EOF
 ```
 
-> Replace `<ETCD_IP>:<ETCD_PORT>` with your etcd configuration.  The `etcd_endpoints`
-> paramater may contain a comma separated list of endpoints of your etcd cluster.
-> If the parameter is omitted from the config file, Calico defaults to a single etcd
-> endpoint at http://127.0.0.1:2379.
+<div class="alert alert-info" role="alert"><b>Note</b>: Replace <samp>ETCD_IP</samp> and <samp>ETCD_PORT</samp> with your etcd configuration. The <samp>etcd_endpoints</samp> parameter may contain a comma separated list of endpoints of your etcd cluster. If the parameter is omitted from the configuration file, Calico defaults to a single etcd endpoint at http://127.0.0.1:2379.</div>
+
 
 ## Next steps
 
