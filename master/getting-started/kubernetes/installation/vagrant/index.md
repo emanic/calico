@@ -24,10 +24,10 @@ These instructions allow you to set up a Kubernetes cluster with Calico networki
 Run
 
     vagrant up
+    
+<div class="alert alert-info" role="alert"><b>Note</b>: This will deploy a Kubernetes master and two Kubernetes nodes. To run more nodes, modify the value <samp>num_instances</samp> in the Vagrantfile before running <samp>vagrant up</samp></div>
 
-> *Note*: This will deploy a Kubernetes master and two Kubernetes nodes. To run more nodes, modify the value `num_instances` in the Vagrantfile before running `vagrant up`.
-
-To connect to your servers
+To connect to your servers:
 
 * Linux/Mac OS X
     * run `vagrant ssh <hostname>`

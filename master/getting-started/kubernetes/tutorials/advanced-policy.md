@@ -55,10 +55,7 @@ kubectl expose --namespace=advanced-policy-demo deployment nginx --port=80
 
 #### Check using calicoctl
 
-  > **NOTE**
-  >
-  > This requires the [calicoctl tool to be configured]({{site.baseurl}}/{{page.version}}/reference/calicoctl/setup/etcdv2).
-  > For example: `export ETCD_ENDPOINTS=http://10.96.232.136:6666`
+<div class="alert alert-danger" role="alert"><b>Prerequisite</b>: <a href="{{site.baseurl}}/{{page.version}}/reference/calicoctl/setup/etcdv2"><samp>calicoctl</samp> must be configured</a>. For example: <samp>export ETCD_ENDPOINTS=http://10.96.232.136:6666</samp></div>
 
 Now that we've created a Namespace and a set of pods, we should see those objects show up in the
 Calico API using `calicoctl`.

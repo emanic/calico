@@ -75,7 +75,8 @@ Modify the DaemonSet manifest and run:
 kubectl apply -f calico-node.yaml
 ```
 
-> Alternatively, you can use `kubectl edit` to modify the DaemonSet.
+<div class="alert alert-info" role="alert"><b>Note</b>: Alternatively, you can use <samp>kubectl edit</samp> to modify the DaemonSet.</div>
+
 
 ##### 2. Upgrade each node.
 
