@@ -118,9 +118,8 @@ $ calicoctl apply -f - << EOF
 EOF
 ```
 
-> **NOTE**
->
-> If you plan to edit the resource to configure the IP addresses, make sure
-> you are not specifying the IP address options or environment variables when starting the
->`calico/node` container - otherwise those values will overwrite the values
-> configured through the resource.
+<div class="alert alert-info" role="alert"><b>Note</b>: If you plan to edit the resource 
+to configure the IP addresses, make sure you are not specifying the IP address options 
+or environment variables when starting the <samp>calico/node</samp> container&mdash;otherwise 
+those values will overwrite the values configured through the resource.</div>
+

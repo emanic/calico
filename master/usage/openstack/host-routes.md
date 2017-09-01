@@ -31,17 +31,16 @@ that host route to go through.  In networking-calico's usage, subnet gateway
 IPs represent the local hypervisor, because data sent by an instance is always
 routed there.
 
-> **NOTE**
->
-> networking-calico avoids unnecessary IP usage by using the subnet
-> gateway IP to represent the local compute host, on every compute host where
-> that subnet is being used.  Although that might initially sound odd, it works
-> because no data is ever sent to or from the gateway IP address; the gateway
-> IP is only used as the next hop address for the first IP hop from an instance
-> to its compute host, and then the compute host routes the data again,
-> according to its routing table, to wherever it needs to go.  This also means
-> that the gateway IP address really is functioning as each instance's default
-> gateway, in the generally understood sense.
+<div class="alert alert-info" role="alert"><b>Note</b>: networking-calico avoids 
+unnecessary IP usage by using the subnet gateway IP to represent the local compute 
+host, on every compute host where that subnet is being used.  Although that might 
+initially sound odd, it works because no data is ever sent to or from the gateway 
+IP address; the gateway IP is only used as the next hop address for the first IP 
+hop from an instance to its compute host, and then the compute host routes the 
+data again, according to its routing table, to wherever it needs to go.  This also 
+means that the gateway IP address really is functioning as each instance's default
+gateway, in the generally understood sense.</div>
+
 
 When are host routes useful with Calico?
 ----------------------------------------
