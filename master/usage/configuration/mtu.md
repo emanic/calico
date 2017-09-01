@@ -63,10 +63,10 @@ Example CNI configuration
 }
 ```
 
-> **NOTE**
->
-> The MTU on existing workloads will not be updated with this
-change.  To have all workloads use the new MTU, they must be restarted.
+<div class="alert alert-info" role="alert"><b>Note</b>: The MTU on existing 
+workloads will not be updated with this change. To have all workloads use 
+the new MTU, they must be restarted.</div>
+
 
 ### Setting MTU for tunnel network interfaces
 
@@ -89,10 +89,10 @@ following command to set the global config value.
 calicoctl config set --raw=felix IpInIpMtu 1480
 ```
 
-> **NOTE**
->
-> Setting the `IpInIpMtu` config option will result in an immediate
-update the tunnel interface MTU on all of the active nodes in your cluster.
+<div class="alert alert-info" role="alert"><b>Note</b>: Setting the 
+<samp>IpInIpMtu</samp> configuration option will result in an immediate
+update the tunnel interface MTU on all of the active nodes in your cluster.</div>
+
 
 ## Configuring MTU in Kubernetes self-hosted manifests
 

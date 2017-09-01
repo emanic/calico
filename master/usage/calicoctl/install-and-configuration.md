@@ -26,9 +26,9 @@ curl -O -L {{site.data.versions[page.version].first.components.calicoctl.downloa
 chmod +x calicoctl
 ```
 
-<div class="alert alert-info" role="alert"><b>Note</b>: Move calicoctl to a 
-directory in your PATH or add the directory it is in to
-your PATH to avoid prepending the path to invocations of calicoctl.</div>
+<div class="alert alert-info" role="alert"><b>Note</b>: Move <samp>calicoctl</samp> to a 
+directory in your <samp>PATH</samp> or add the directory it is in to
+your <samp>PATH</samp> to avoid prepending the path to invocations of <samp>calicoctl</samp>. </div>
 
 
 ### Datastore configuration
