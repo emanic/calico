@@ -205,7 +205,7 @@ isn't running the etcd database itself (both control and compute nodes).
         ```
         ETCD_PROXY=on
         ETCD_DATA_DIR=/var/lib/etcd
-        TCD_INITIAL_CLUSTER="<etcd_hostname>=http://<etcd_ip>:2380"
+        ETCD_INITIAL_CLUSTER="<etcd_hostname>=http://<etcd_ip>:2380"
         ```
 
         You then need to add the following file to `/usr/lib/systemd/system/etcd.service`
