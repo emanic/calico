@@ -83,10 +83,10 @@ through the process.
     -   Download, unpack, and install the binary:
 
         ```
-            curl -L  https://github.com/coreos/etcd/releases/download/v2.0.11/etcd-v2.0.11-linux-amd64.tar.gz -o etcd-v2.0.11-linux-amd64.tar.gz
-            tar xvf etcd-v2.0.11-linux-amd64.tar.gz
-            cd etcd-v2.0.11-linux-amd64
-            mv etcd* /usr/local/bin/
+        curl -L  https://github.com/coreos/etcd/releases/download/v2.0.11/etcd-v2.0.11-linux-amd64.tar.gz -o etcd-v2.0.11-linux-amd64.tar.gz
+        tar xvf etcd-v2.0.11-linux-amd64.tar.gz
+        cd etcd-v2.0.11-linux-amd64
+        mv etcd* /usr/local/bin/
         ```
         
         <div class="alert alert-danger" role="alert"><b>Important</b>: We've seen certificate errors downloading etcd&mdash;you may need to add <samp>--insecure</samp> to the curl command to ignore this.</div>
@@ -94,15 +94,15 @@ through the process.
     -   Create an etcd user:
 
         ```
-            adduser -s /sbin/nologin -d /var/lib/etcd/ etcd
-            chmod 700 /var/lib/etcd/
+        adduser -s /sbin/nologin -d /var/lib/etcd/ etcd
+        chmod 700 /var/lib/etcd/
         ```
 
     -   Add the following line to the bottom of `/etc/fstab`. This will
         mount a ramdisk for etcd at startup:
 
         ```
-            tmpfs /var/lib/etcd tmpfs nodev,nosuid,noexec,nodiratime,size=512M 0 0
+        tmpfs /var/lib/etcd tmpfs nodev,nosuid,noexec,nodiratime,size=512M 0 0
         ```
 
     -   Run `mount -a` to mount it now.
@@ -113,22 +113,22 @@ through the process.
         the machine.
 
         ```
-            ETCD_DATA_DIR=/var/lib/etcd
-            ETCD_NAME=<hostname>
-            ETCD_ADVERTISE_CLIENT_URLS="http://<public_ip>:2379,http://<public_ip>:4001"
-            ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379,http://0.0.0.0:4001"
-            ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
-            ETCD_INITIAL_ADVERTISE_PEER_URLS="http://<public_ip>:2380"
-            ETCD_INITIAL_CLUSTER="<hostname>=http://<public_ip>:2380"
-            ETCD_INITIAL_CLUSTER_STATE=new
+        ETCD_DATA_DIR=/var/lib/etcd
+        ETCD_NAME=<hostname>
+        ETCD_ADVERTISE_CLIENT_URLS="http://<public_ip>:2379,http://<public_ip>:4001"
+        ETCD_LISTEN_CLIENT_URLS="http://0.0.0.0:2379,http://0.0.0.0:4001"
+        ETCD_LISTEN_PEER_URLS="http://0.0.0.0:2380"
+        ETCD_INITIAL_ADVERTISE_PEER_URLS="http://<public_ip>:2380"
+        ETCD_INITIAL_CLUSTER="<hostname>=http://<public_ip>:2380"
+        ETCD_INITIAL_CLUSTER_STATE=new
         ```
 
         Check the `uuidgen` tool is installed (the output should change
         each time):
 
         ```
-            # uuidgen
-            11f92f19-cb5a-476f-879f-5efc34033b8b
+        # uuidgen
+        11f92f19-cb5a-476f-879f-5efc34033b8b
         ```
 
         If it is not installed, run `yum install util-linux` to
@@ -137,9 +137,9 @@ through the process.
         Place the following in `/usr/local/bin/start-etcd`:
 
         ```
-            #!/bin/sh
-            export ETCD_INITIAL_CLUSTER_TOKEN=`uuidgen`
-            exec /usr/local/bin/etcd
+        #!/bin/sh
+        export ETCD_INITIAL_CLUSTER_TOKEN=`uuidgen`
+        exec /usr/local/bin/etcd
         ```
 
         Then run `chmod +x /usr/local/bin/start-etcd` to make that
@@ -149,26 +149,26 @@ through the process.
         `/usr/lib/systemd/system/etcd.service`:
 
         ```
-            [Unit]
-            Description=Etcd
-            After=syslog.target network.target
+        [Unit]
+        Description=Etcd
+        After=syslog.target network.target
 
-            [Service]
-            User=root
-            ExecStart=/usr/local/bin/start-etcd
-            EnvironmentFile=-/etc/sysconfig/etcd
-            KillMode=process
-            Restart=always
+        [Service]
+        User=root
+        ExecStart=/usr/local/bin/start-etcd
+        EnvironmentFile=-/etc/sysconfig/etcd
+        KillMode=process
+        Restart=always
 
-            [Install]
-            WantedBy=multi-user.target
+        [Install]
+        WantedBy=multi-user.target
         ```
 
 2.  Launch etcd and set it to restart after a reboot:
 
     ```
-        systemctl start etcd
-        systemctl enable etcd
+    systemctl start etcd
+    systemctl enable etcd
     ```
 
 ## Etcd Proxy Install
@@ -180,21 +180,21 @@ isn't running the etcd database itself (both control and compute nodes).
 
     -   Download, unpack, and install the binary:
 
-    ```
+        ```
         curl -L  https://github.com/coreos/etcd/releases/download/v2.0.11/etcd-v2.0.11-linux-amd64.tar.gz -o etcd-v2.0.11-linux-amd64.tar.gz
         tar xvf etcd-v2.0.11-linux-amd64.tar.gz
         cd etcd-v2.0.11-linux-amd64
         mv etcd* /usr/local/bin/
-    ```
+        ```
 
-    <div class="alert alert-danger" role="alert"><b>Important</b>: We've seen certificate errors downloading etcd&mdash;you may need to add <samp>--insecure</samp> to the curl command to ignore this.</div>
+        <div class="alert alert-danger" role="alert"><b>Important</b>: We've seen certificate errors downloading etcd&mdash;you may need to add <samp>--insecure</samp> to the curl command to ignore this.</div>
 
     -   Create an etcd user:
 
-    ```
-           adduser -s /sbin/nologin -d /var/lib/etcd/ etcd
-           chmod 700 /var/lib/etcd/
-    ```
+        ```
+        adduser -s /sbin/nologin -d /var/lib/etcd/ etcd
+        chmod 700 /var/lib/etcd/
+        ```
 
     -   Get etcd running by providing an init file.
 
@@ -202,35 +202,35 @@ isn't running the etcd database itself (both control and compute nodes).
         `<etcd_hostname>` and `<etcd_ip>` with the values you used in
         the [etcd install](#etcd-install) section.
 
-    ```
-            ETCD_PROXY=on
-            ETCD_DATA_DIR=/var/lib/etcd
-            ETCD_INITIAL_CLUSTER="<etcd_hostname>=http://<etcd_ip>:2380"
-    ```
+        ```
+        ETCD_PROXY=on
+        ETCD_DATA_DIR=/var/lib/etcd
+        TCD_INITIAL_CLUSTER="<etcd_hostname>=http://<etcd_ip>:2380"
+        ```
 
         You then need to add the following file to `/usr/lib/systemd/system/etcd.service`
 
-    ```
-            [Unit]
-            Description=Etcd
-            After=syslog.target network.target
+        ```
+        [Unit]
+        Description=Etcd
+        After=syslog.target network.target
 
-            [Service]
-            User=root
-            ExecStart=/usr/local/bin/etcd
-            EnvironmentFile=-/etc/sysconfig/etcd
-            KillMode=process
-            Restart=always
+        [Service]
+        User=root
+        ExecStart=/usr/local/bin/etcd
+        EnvironmentFile=-/etc/sysconfig/etcd
+        KillMode=process
+        Restart=always
 
-            [Install]
-            WantedBy=multi-user.target
-    ```
+        [Install]
+        WantedBy=multi-user.target
+        ```
 
 2.  Launch etcd and set it to restart after a reboot:
 
     ```
-        systemctl start etcd
-        systemctl enable etcd
+    systemctl start etcd
+    systemctl enable etcd
     ```
 
 ## Control Node Install
