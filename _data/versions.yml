@@ -1346,6 +1346,68 @@ v2.1:
       version: 1.4.1
       url: http://git.openstack.org/cgit/openstack/networking-calico/commit/?h=1.4.1
 
+v3.0:
+- title: v3.0.0-beta-rc1
+  note: |
+    20 October 2017
+
+    Calico v3.0.0-beta is a beta release that adds fixes and enhancements
+    to the Kubernetes integration. Enhancements include:
+    - Support for etcdv3 datastore
+    - A new API tuned for etcdv3 - see [libcalico-go release notes](https://github.com/projectcalico/libcalico-go/releases) for more details.
+
+    <div class="alert alert-danger" role="alert"><b>Important</b>: v3.0.0-beta has the following limitations:</div>
+    - **Only Kubernetes integration is currently supported.** `OpenStack`, `Docker`, and `Mesos`
+      are not supported in v3.0 - bad things will happen if you upgrade! This limitation
+      will also be true for the v3.0 GA release. Support for integrations other than Kubernetes
+      will follow soon after v3.0.
+    - Currently only **new** Kubernetes installations are supported. For existing deployments,
+      migrating from `etcdv2` to `etcdv3` is required, but not currently supported.
+    - There is limited data validation, therefore it may be easy to misconfigure resources or policy.
+    - Resource definitions have changed - old `calicoctl` manifests will need to be updated. See
+      [Calicoctl resource definitions](http://0.0.0.0:4000/v3.0/reference/calicoctl/resources/) for details.
+    - `calicoctl` command syntax has changed to accomodate the updated resource definitions.
+
+    <!-- Once migration from etcdv2 to etcdv3 is supported, restore the following warning -->
+    <!-- <div class="alert alert-danger" role="alert"><b>Important</b>: If you are using the Kubernetes datastore and upgrading from Calico v2.4.x or earlier to Calico v2.5.x or later, you must <a href="https://github.com/projectcalico/calico/blob/master/upgrade/v2.5/README.md">migrate your Calico configuration data</a> before upgrading. Otherwise, your cluster may lose connectivity after the upgrade.</div> -->
+
+  components:
+    felix:
+      version: ~~2.6.0~~
+      url: https://github.com/projectcalico/felix/releases/tag/2.6.0
+    typha:
+      version: ~~v0.5.1~~
+      url: https://github.com/projectcalico/typha/releases/tag/v0.5.1
+    calicoctl:
+      version: ~~v1.6.1~~
+      url: https://github.com/projectcalico/calicoctl/releases/tag/v1.6.1
+      download_url: https://github.com/projectcalico/calicoctl/releases/download/v1.6.1/calicoctl
+    calico/node:
+      version: ~~v2.6.1~~
+      url: https://github.com/projectcalico/calico/releases/tag/v2.6.1
+    calico/cni:
+      version: ~~v1.11.0~~
+      url: https://github.com/projectcalico/cni-plugin/releases/tag/v1.11.0
+      download_calico_url: https://github.com/projectcalico/cni-plugin/releases/download/v1.11.0/calico
+      download_calico_ipam_url: https://github.com/projectcalico/cni-plugin/releases/download/v1.11.0/calico-ipam
+    calico-bird:
+      version: ~~v0.3.1~~
+      url: https://github.com/projectcalico/calico-bird/releases/tag/v0.3.1
+    calico-bgp-daemon:
+      version: ~~v0.2.1~~
+      url: https://github.com/projectcalico/calico-bgp-daemon/releases/tag/v0.2.1
+    libnetwork-plugin:
+      version: ~~v1.1.0~~
+      url: https://github.com/projectcalico/libnetwork-plugin/releases/tag/v1.1.0
+    calico/kube-controllers:
+      version: ~~v1.0.0~~
+      url: https://github.com/projectcalico/k8s-policy/releases/tag/v1.0.0
+    networking-calico:
+      version: ~~1.4.3~~
+      url: http://git.openstack.org/cgit/openstack/networking-calico/commit/?h=1.4.3
+    calico/routereflector:
+      version: ~~v0.4.0~~
+      url: ""
 
 # The master release stream is used to generate the master version of the docs,
 # as well as for builds of `calico/node:master` via CI.  Submit PRs to update the
@@ -1391,4 +1453,4 @@ master:
 currentReleaseStream: v2.6
 
 # Local directories to ignore when checking external links
-htmlProoferLocalDirIgnore: /v1.5/,/v1.6/,/v2.0/,/v2.1/,/v2.2/
+htmlProoferLocalDirIgnore: /v1.5/,/v1.6/,/v2.0/,/v2.1/,/v2.2/,/v2.3/
