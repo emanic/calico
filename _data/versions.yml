@@ -1351,8 +1351,7 @@ v3.0:
   note: |
     20 October 2017
 
-    Calico v3.0.0-beta is a beta release that adds fixes and enhancements
-    to the Kubernetes integration. Enhancements include:
+    Calico v3.0.0-beta adds fixes and enhancements to the Kubernetes integration. Enhancements include:
     - Support for etcdv3 datastore
     - A new API tuned for etcdv3 - see [libcalico-go release notes](https://github.com/projectcalico/libcalico-go/releases) for more details.
 
@@ -1365,8 +1364,8 @@ v3.0:
       migrating from `etcdv2` to `etcdv3` is required, but not currently supported.
     - There is limited data validation, therefore it may be easy to misconfigure resources or policy.
     - Resource definitions have changed - old `calicoctl` manifests will need to be updated. See
-      [Calicoctl resource definitions](http://0.0.0.0:4000/v3.0/reference/calicoctl/resources/) for details.
-    - `calicoctl` command syntax has changed to accomodate the updated resource definitions.
+      [Calicoctl resource definitions](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/) for details.
+    - `calicoctl` command syntax has changed to accommodate the updated resource definitions.
 
     <!-- Once migration from etcdv2 to etcdv3 is supported, restore the following warning -->
     <!-- <div class="alert alert-danger" role="alert"><b>Important</b>: If you are using the Kubernetes datastore and upgrading from Calico v2.4.x or earlier to Calico v2.5.x or later, you must <a href="https://github.com/projectcalico/calico/blob/master/upgrade/v2.5/README.md">migrate your Calico configuration data</a> before upgrading. Otherwise, your cluster may lose connectivity after the upgrade.</div> -->
