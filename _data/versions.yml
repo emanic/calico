@@ -1347,13 +1347,15 @@ v2.1:
       url: http://git.openstack.org/cgit/openstack/networking-calico/commit/?h=1.4.1
 
 v3.0:
-- title: v3.0.0-beta-rc1
+- title: v3.0.0-alpha1
   note: |
     20 October 2017
 
-    Calico v3.0.0-beta adds fixes and enhancements to the Kubernetes integration. Enhancements include:
+    Calico v3.0.0-alpha adds fixes and enhancements to the Kubernetes integration. Enhancements include:
     - Support for etcdv3 datastore
     - A new API tuned for etcdv3 - see [libcalico-go release notes](https://github.com/projectcalico/libcalico-go/releases) for more details.
+    - Now able to name [host](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/hostendpoint#endpointport) and [workload](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/workloadendpoint#endpointport) endpoint ports and then reference the port names in your [policy rules](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/policy#ports).
+    - The new `ApplyOnForward` flag allows you to specify if a host endpoint policy should apply to forwarded traffic or not. Forwarded traffic includes traffic forwarded between host endpoints and traffic forwarded between a host endpoint and a workload endpoint on the same host. Refer to [Using Calico to secure host interfaces](https://docs.projectcalico.org/v3.0/getting-started/bare-metal/bare-metal) for more details.
 
     <div class="alert alert-danger" role="alert"><b>Important</b>: v3.0.0-beta has the following limitations:</div>
     - **Only Kubernetes integration is currently supported.** `OpenStack`, `Docker`, and `Mesos`
