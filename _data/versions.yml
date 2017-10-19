@@ -1347,7 +1347,7 @@ v2.1:
       url: http://git.openstack.org/cgit/openstack/networking-calico/commit/?h=1.4.1
 
 v3.0:
-- title: v3.0.0-alpha1
+- title: v3.0.0-alpha1-rc1
   note: |
     20 October 2017
 
@@ -1374,40 +1374,40 @@ v3.0:
 
   components:
     felix:
-      version: ~~2.6.0~~
-      url: https://github.com/projectcalico/felix/releases/tag/2.6.0
+      version: 3.0.0-alpha1-rc1
+      url: https://github.com/projectcalico/felix/releases/tag/3.0.0-alpha1-rc1
     typha:
-      version: ~~v0.5.1~~
-      url: https://github.com/projectcalico/typha/releases/tag/v0.5.1
+      version: v0.6.0-alpha1-rc1
+      url: https://github.com/projectcalico/typha/releases/tag/v0.6.0-alpha1-rc1
     calicoctl:
-      version: ~~v1.6.1~~
-      url: https://github.com/projectcalico/calicoctl/releases/tag/v1.6.1
-      download_url: https://github.com/projectcalico/calicoctl/releases/download/v1.6.1/calicoctl
+      version: v2.0.0-alpha1-rc1
+      url: https://github.com/projectcalico/calicoctl/releases/tag/v2.0.0-alpha1-rc1
+      download_url: https://github.com/projectcalico/calicoctl/releases/download/v2.0.0-alpha1-rc1/calicoctl
     calico/node:
-      version: ~~v2.6.1~~
-      url: https://github.com/projectcalico/calico/releases/tag/v2.6.1
+      version: v3.0.0-alpha1-rc1
+      url: https://github.com/projectcalico/calico/releases/tag/v3.0.0-alpha1-rc1
     calico/cni:
-      version: ~~v1.11.0~~
-      url: https://github.com/projectcalico/cni-plugin/releases/tag/v1.11.0
-      download_calico_url: https://github.com/projectcalico/cni-plugin/releases/download/v1.11.0/calico
-      download_calico_ipam_url: https://github.com/projectcalico/cni-plugin/releases/download/v1.11.0/calico-ipam
+      version: v2.0.0-alpha1-rc1
+      url: https://github.com/projectcalico/cni-plugin/releases/tag/v2.0.0-alpha1-rc1
+      download_calico_url: https://github.com/projectcalico/cni-plugin/releases/download/v2.0.0-alpha1-rc1/calico
+      download_calico_ipam_url: https://github.com/projectcalico/cni-plugin/releases/download/v2.0.0-alpha1-rc1/calico-ipam
     calico-bird:
-      version: ~~v0.3.1~~
+      version: v0.3.1
       url: https://github.com/projectcalico/calico-bird/releases/tag/v0.3.1
     calico-bgp-daemon:
-      version: ~~v0.2.1~~
+      version: v0.2.1
       url: https://github.com/projectcalico/calico-bgp-daemon/releases/tag/v0.2.1
     libnetwork-plugin:
-      version: ~~v1.1.0~~
+      version: v1.1.0
       url: https://github.com/projectcalico/libnetwork-plugin/releases/tag/v1.1.0
     calico/kube-controllers:
-      version: ~~v1.0.0~~
-      url: https://github.com/projectcalico/k8s-policy/releases/tag/v1.0.0
+      version: v2.0.0-alpha1-rc1
+      url: https://github.com/projectcalico/k8s-policy/releases/tag/v2.0.0-alpha1-rc1
     networking-calico:
-      version: ~~1.4.3~~
+      version: 1.4.3
       url: http://git.openstack.org/cgit/openstack/networking-calico/commit/?h=1.4.3
     calico/routereflector:
-      version: ~~v0.4.0~~
+      version: v0.4.0
       url: ""
 
 # The master release stream is used to generate the master version of the docs,
