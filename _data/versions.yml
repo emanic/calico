@@ -1351,23 +1351,27 @@ v3.0:
   note: |
     20 October 2017
 
-    Calico v3.0.0-alpha adds fixes and enhancements to the Kubernetes integration. Enhancements include:
-    - Support for etcdv3 datastore
-    - A new API tuned for etcdv3 - see [libcalico-go release notes](https://github.com/projectcalico/libcalico-go/releases) for more details.
-    - Now able to name [host](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/hostendpoint#endpointport) and [workload](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/workloadendpoint#endpointport) endpoint ports and then reference the port names in your [policy rules](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/policy#ports).
+    **What's new**
+    
+    - Support for the [etcd version 3 datastore](https://coreos.com/blog/etcd3-a-new-etcd.html).
+    
+    - Two new `calicoctl` resources: [BGP Configuration](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/bgpconfig) and [Felix Configuration](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/felixconfig).
+    
+    - The `calicoctl` Policy resource has been split into [Network Policy](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/networkpolicy) and [Global Network Policy](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/globalnetworkpolicy).
+    
+    - You can now name [host](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/hostendpoint#endpointport) and [workload](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/workloadendpoint#endpointport) endpoint ports and reference them by name in your [policy rules](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/policy#ports).
+    
     - The new `ApplyOnForward` flag allows you to specify if a host endpoint policy should apply to forwarded traffic or not. Forwarded traffic includes traffic forwarded between host endpoints and traffic forwarded between a host endpoint and a workload endpoint on the same host. Refer to [Using Calico to secure host interfaces](https://docs.projectcalico.org/v3.0/getting-started/bare-metal/bare-metal) for more details.
-
-    <div class="alert alert-danger" role="alert"><b>Important</b>: v3.0.0-beta has the following limitations:</div>
-    - **Only Kubernetes integration is currently supported.** `OpenStack`, `Docker`, and `Mesos`
-      are not supported in v3.0 - bad things will happen if you upgrade! This limitation
-      will also be true for the v3.0 GA release. Support for integrations other than Kubernetes
-      will follow soon after v3.0.
-    - Currently only **new** Kubernetes installations are supported. For existing deployments,
-      migrating from `etcdv2` to `etcdv3` is required, but not currently supported.
-    - There is limited data validation, therefore it may be easy to misconfigure resources or policy.
-    - Resource definitions have changed - old `calicoctl` manifests will need to be updated. See
-      [Calicoctl resource definitions](https://docs.projectcalico.org/v3.0/reference/calicoctl/resources/) for details.
-    - `calicoctl` command syntax has changed to accommodate the updated resource definitions.
+    
+    **Limitations**
+    
+    - **No upgrades**: Calico v3.0.0 ends support for etcd version 2. Existing customers must migrate their data to etcd version 3. The alpha release does not provide migration capabilities, nor does it support upgrades. We plan to add migration and upgrade support in the GA release. 
+    
+    - **Integrates only with Kubernetes and host endpoints**: the Docker, OpenStack, OpenShift, Mesos, DC/OS, and rkt orchestrators have not been tested and are not supported. (Calico v3.0.0 still supports Docker and rkt containers.)
+    
+    - **Lack of `calicoctl` data validation**: `calicoctl` does not perform as much validation on data, increasing the potential for bad data. Use caution when entering data via `calicoctl`.
+    
+    - **No support for BGP route reflection**: large deployments that require [BGP route reflection](https://docs.projectcalico.org/v3.0/usage/routereflector/bird-rr-config) are not supported.
 
     <!-- Once migration from etcdv2 to etcdv3 is supported, restore the following warning -->
     <!-- <div class="alert alert-danger" role="alert"><b>Important</b>: If you are using the Kubernetes datastore and upgrading from Calico v2.4.x or earlier to Calico v2.5.x or later, you must <a href="https://github.com/projectcalico/calico/blob/master/upgrade/v2.5/README.md">migrate your Calico configuration data</a> before upgrading. Otherwise, your cluster may lose connectivity after the upgrade.</div> -->
@@ -1409,6 +1413,8 @@ v3.0:
     calico/routereflector:
       version: v0.4.0
       url: ""
+
+
 
 # The master release stream is used to generate the master version of the docs,
 # as well as for builds of `calico/node:master` via CI.  Submit PRs to update the
