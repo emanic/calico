@@ -1,7 +1,7 @@
 v3.1:
 - title: v3.1.0-rc1
   note: |
-    20 March 2018
+    21 March 2018
 
     #### Support for OpenStack
     Calico v3.1 reintroduces support for OpenStack. Users can now upgrade their Calico 
