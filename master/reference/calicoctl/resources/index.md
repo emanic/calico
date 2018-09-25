@@ -6,14 +6,14 @@ canonical_url: 'https://docs.projectcalico.org/v3.4/reference/calicoctl/resource
 This section describes the set of valid resource types that can be managed
 through `calicoctl`.  
 
-While resources may be supplied in YAML or JSON format, this guide provides examples in YAML. 
+While resources may be supplied in YAML or JSON format, this guide provides examples in YAML.
 
 ## Overview of resource structure
 
 The calicoctl commands for resource management (create, apply, delete, replace, get)
 all take resource manifests as input.  
 
-Each manifest may contain a single resource 
+Each manifest may contain a single resource
 (e.g. a profile resource), or a list of multiple resources (e.g. a profile and two
 hostEndpoint resources).
 
@@ -28,31 +28,31 @@ metadata:
   ...
 spec:
   # Specification of the resource
-  ... 
+  ...
 ```
 
-### Schema 
+### Schema
 
 | Field    | Description           | Accepted Values              | Schema |
 |----------|-----------------------|------------------------------|--------|
-| apiVersion     | Indicates the version of the API that the data corresponds to. | projectcalico.org/v3 | string |
-| kind     | Specifies the type of resource described by the YAML document. |  | [kind](#supported-kinds) |
-| metadata | Contains information used to uniquely identify the particular instance of the resource. | | map |
-| spec     | Contains the resource specification. | | map |
+| `apiVersion`     | Indicates the version of the API that the data corresponds to. | projectcalico.org/v3 | string |
+| `kind `    | Specifies the type of resource described by the YAML document. |  | [kind](#supported-kinds) |
+| `metadata` | Contains information used to uniquely identify the particular instance of the resource. | | map |
+| `spec`     | Contains the resource specification. | | map |
 
 ### Supported Kinds
 
 The following resources are supported:
 
-- [BGPPeer]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/bgppeer)
-- [BGPConfiguration]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/bgpconfig)
-- [HostEndpoint]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/hostendpoint)
-- [NetworkPolicy]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/networkpolicy)
-- [GlobalNetworkPolicy]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/globalnetworkpolicy)
-- [IPPool]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/ippool)
-- [Profile]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/profile)
-- [FelixConfiguration]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/felixconfig)
-- [WorkloadEndpoint]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/workloadendpoint)
+- [`BGPPeer`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/bgppeer)
+- [`BGPConfiguration`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/bgpconfig)
+- [`HostEndpoint`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/hostendpoint)
+- [`NetworkPolicy`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/networkpolicy)
+- [`GlobalNetworkPolicy`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/globalnetworkpolicy)
+- [`IPPool`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/ippool)
+- [`Profile`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/profile)
+- [`FelixConfiguration`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/felixconfig)
+- [`WorkloadEndpoint`]({{site.baseurl}}/{{page.version}}/reference/calicoctl/resources/workloadendpoint)
 
 ### Resource name requirements
 

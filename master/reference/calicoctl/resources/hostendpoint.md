@@ -67,18 +67,18 @@ spec:
 
 | Field   | Description                                | Accepted Values                                     | Schema |
 |---------|--------------------------------------------|-----------------------------------------------------|--------|
-| name    | The name of this hostEndpoint. Required.   | Alphanumeric string with optional `.`, `_`, or `-`. | string |
-| labels  | A set of labels to apply to this endpoint. |                                                     | map    |
+| `name`    | The name of this hostEndpoint. Required.   | Alphanumeric string with optional `.`, `_`, or `-`. | string |
+| `labels`  | A set of labels to apply to this endpoint. |                                                     | map    |
 
 #### Spec
 
 | Field         | Description                                              | Accepted Values             | Schema                                 | Default |
 |---------------|----------------------------------------------------------|-----------------------------|----------------------------------------|---------|
-| node          | The name of the node where this HostEndpoint resides.    |                             | string                                 |
-| interfaceName | Either `*` or the name of the specific interface on which to apply policy. |           | string                                 |
-| expectedIPs   | The expected IP addresses associated with the interface. | Valid IPv4 or IPv6 address  | list                                   |
-| profiles      | The list of profiles to apply to the endpoint.           |                             | list                                   |
-| ports         | List of named ports that this workload exposes.          |                             | List of [EndpointPorts](#endpointport) |
+| `node`          | The name of the node where this HostEndpoint resides.    |                             | string                                 |
+| `interfaceName` | Either `*` or the name of the specific interface on which to apply policy. |                             | string                                 |
+| `expectedIPs`   | The expected IP addresses associated with the interface. | Valid IPv4 or IPv6 address  | list                                   |
+| `profiles`      | The list of profiles to apply to the endpoint.           |                             | list                                   |
+| `ports`         | List of named ports that this workload exposes.          |                             | List of [EndpointPorts](#endpointport) |
 
 #### EndpointPort
 

@@ -56,7 +56,7 @@ a whole, there can then be:
 The first node should be prepared as described above.  Then, for each
 additional compute node:
 
-- set and export the SERVICE_HOST environment variable, to the name of the
+- set and export the `SERVICE_HOST` environment variable, to the name of the
   controller node; for example:
 
       export SERVICE_HOST=calico-vm18

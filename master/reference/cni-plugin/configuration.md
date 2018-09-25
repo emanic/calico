@@ -129,7 +129,7 @@ Any IP pools specified in the CNI config must have already been created. It is a
 
 The following options allow configuration of settings within the container namespace.
 
-* allow_ip_forwarding (default is `false`)
+* `allow_ip_forwarding` (default is `false`)
 
 ```json
 {
@@ -206,7 +206,7 @@ When using `type: k8s`, the Calico CNI plugin requires read-only Kubernetes API 
 
 ## IPAM
 
-When using the CNI `host-local` IPAM plugin, a special value `usePodCidr` is allowed for the subnet field (either at the top-level, or in a "range").  This tells the plugin to determine the subnet to use from the Kubernetes API based on the Node.podCIDR field.  Calico does not use the `gateway` field of a range so that field is not required and it will be ignored if present.
+When using the CNI `host-local` IPAM plugin, a special value `usePodCidr` is allowed for the subnet field (either at the top-level, or in a "range").  This tells the plugin to determine the subnet to use from the Kubernetes API based on the `Node.podCIDR` field.  Calico does not use the `gateway` field of a range so that field is not required and it will be ignored if present.
 
 > **Note**: `usePodCidr` can only be used as the value of the `subnet` field, it cannot be used in
 > `rangeStart` or `rangeEnd` so those values are not useful if `subnet` is set to `usePodCidr`.
@@ -315,7 +315,7 @@ There are two annotations to request a specific IP address:
         "cni.projectcalico.org/ipAddrsNoIpam": "[\"10.0.0.1\"]"
    ```
 
-   The ipAddrsNoIpam feature is disabled by default. It can be enabled in the feature_control section of the CNI network config:
+   The `ipAddrsNoIpam` feature is disabled by default. It can be enabled in the feature_control section of the CNI network config:
 
    ```json
    {

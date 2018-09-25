@@ -44,7 +44,7 @@ Containers with permission `CAP_NET_RAW` can spoof their IP address if the
 configured to 'strict', preventing this behavior.
 [DC/OS, however, arbitrarily sets `rp_filter` to 'loose' across all interfaces](https://dcosjira.atlassian.net/browse/DCOS-265), including the interfaces
 Calico creates and uses. By default, [Felix notices this and refuses to launch](https://github.com/projectcalico/calicoctl/issues/1082#issue-168163079). In DC/OS, however, we configure Felix to ignore this by setting
-[IgnoreLooseRPF](https://github.com/projectcalico/felix/blob/ab8799eaea66627e5db7717e62fca61fd9c08646/python/calico/felix/config.py#L198) to true. As a result, be cautious when granting containers `CAP_NET_RAW` since, if compromised, these
+[`ignoreLooseRPF`](https://github.com/projectcalico/felix/blob/ab8799eaea66627e5db7717e62fca61fd9c08646/python/calico/felix/config.py#L198) to true. As a result, be cautious when granting containers `CAP_NET_RAW` since, if compromised, these
 containers will be able to spoof their IP address, potentially allowing them to bypass firewall restrictions.
 
 Next, we'll dive into each task the Framework performs.

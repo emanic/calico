@@ -65,12 +65,12 @@ specify custom etcd cluster endpoints as well as TLS.
 
 The following table outlines the supported `ConfigMap` options for etcd:
 
-| Option                 | Description    | Default
-|------------------------|----------------|----------
-| etcd_endpoints         | Comma-delimited list of etcd endpoints to connect to. | http://127.0.0.1:2379
-| etcd_ca                | The file containing the root certificate of the CA that issued the etcd server certificate. Configures `{{site.nodecontainer}}`, the CNI plugin, and the Kubernetes controllers to trust the signature on the certificates provided by the etcd server. | None
-| etcd_key               | The file containing the private key of the `{{site.nodecontainer}}`, the CNI plugin, and the Kubernetes controllers client certificate. Enables these components to participate in mutual TLS authentication and identify themselves to the etcd server. | None
-| etcd_cert              | The file containing the client certificate issued to `{{site.nodecontainer}}`, the CNI plugin, and the Kubernetes controllers. Enables these components to participate in mutual TLS authentication and identify themselves to the etcd server. | None
+| Option                   | Description    | Default
+|--------------------------|----------------|----------
+| `etcd_endpoints`         | Comma-delimited list of etcd endpoints to connect to. | http://127.0.0.1:2379
+| `etcd_ca`                | The file containing the root certificate of the CA that issued the etcd server certificate. Configures `{{site.nodecontainer}}`, the CNI plugin, and the Kubernetes controllers to trust the signature on the certificates provided by the etcd server. | None
+| `etcd_key`               | The file containing the private key of the `{{site.nodecontainer}}`, the CNI plugin, and the Kubernetes controllers client certificate. Enables these components to participate in mutual TLS authentication and identify themselves to the etcd server. | None
+| `etcd_cert`              | The file containing the client certificate issued to `{{site.nodecontainer}}`, the CNI plugin, and the Kubernetes controllers. Enables these components to participate in mutual TLS authentication and identify themselves to the etcd server. | None
 
 To use these manifests with a TLS-enabled etcd cluster you must do the following:
 
@@ -175,8 +175,8 @@ The following table outlines the remaining supported `ConfigMap` options.
 
 | Option                 | Description         | Default
 |------------------------|---------------------|----------
-| calico_backend         | The backend to use. | `bird`
-| cni_network_config     | The CNI Network config to install on each node.  Supports templating as described below. |
+| `calico_backend`         | The backend to use. | `bird`
+| `cni_network_config`     | The CNI Network config to install on each node.  Supports templating as described below. |
 
 ### CNI network configuration template
 

@@ -22,7 +22,7 @@ existing metrics.
 | `felix_active_local_selectors` | Number of active selectors on this host. |
 | `felix_active_local_tags` | Number of active tags on this host. |
 | `felix_calc_graph_output_events` | Number of events emitted by the calculation graph. |
-| `felix_calc_graph_update_time_seconds` | Seconds to update calculation graph for each datastore OnUpdate call. |
+| `felix_calc_graph_update_time_seconds` | Seconds to update calculation graph for each datastore `OnUpdate` call. |
 | `felix_calc_graph_updates_processed` | Number of datastore updates processed by the calculation graph. |
 | `felix_cluster_num_host_endpoints` | Total number of host endpoints cluster-wide. |
 | `felix_cluster_num_hosts` | Total number of {{site.prodname}} hosts in the cluster. |

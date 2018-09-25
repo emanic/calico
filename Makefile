@@ -58,6 +58,11 @@ kubeval: _site
 	# Run kubeval to check master manifests are valid Kubernetes resources.
 	docker run -v $$PWD:/calico --entrypoint /bin/sh -ti garethr/kubeval:0.1.1 -c 'ok=true; for f in `find /calico/_site/master -name "*.yaml" |grep -v "\(config\|allow-istio-pilot\|30-policy\|istio-app-layer-policy\).yaml"`; do echo Running kubeval on $$f; /kubeval $$f || ok=false; done; $$ok'
 
+spellcheck:
+  docker run -ti -v $(pwd):/workdir tmaier/markdown-spellcheck:latest --report "master/**/*.md" '!master/reference/private-cloud/l3-interconnect-fabric.md' -n -a -t
+	# docker run -ti -v $(pwd):/workdir tmaier/markdown-spellcheck:latest "master/**/*.md" -n -a -t
+	# docker run -ti -v $(pwd):/workdir tmaier/markdown-spellcheck:latest "master/**/*.md" '!master/reference/private-cloud/l3-interconnect-fabric.md' -n -a -t
+
 ###############################################################################
 # Docs automation
 ###############################################################################
